@@ -22,19 +22,18 @@ package com.mingshashan.learn.lt.l303;
  * numArray.sumRange(2, 5); // return 3 + (-5) + 2 + (-1) = -1
  * numArray.sumRange(0, 5); // return (-2) + 0 + 3 + (-5) + 2 + (-1) = -3
  */
-class NumArray {
+class NumArray2 {
 
-    int[] nums;
+    int[] preSum;
 
-    public NumArray(int[] nums) {
-        this.nums = nums;
+    public NumArray2(int[] nums) {
+        preSum = new int[nums.length + 1];
+        for (int i = 1; i <= nums.length; i++) {
+            preSum[i] = preSum[i - 1] + nums[i - 1];
+        }
     }
 
     public int sumRange(int left, int right) {
-        int res = 0;
-        for (int i = left; i <= right; i++) {
-            res += nums[i];
-        }
-        return res;
+        return preSum[right + 1] - preSum[left];
     }
 }

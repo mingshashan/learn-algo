@@ -1,2 +1,2 @@
-# learn-argo
-learn-argo
+# learn-algorithm
+learn-algorithm

@@ -12,7 +12,6 @@ import java.util.Map;
 class Solution {
     /**
      * s1是子串
-     * s1是需要遍历的字符串
      *
      * @param s1 1 <= s1.length, s2.length <= 104
      * @param s2 s1 and s2 consist of lowercase English letters.

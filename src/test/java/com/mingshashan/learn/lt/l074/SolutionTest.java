@@ -1,4 +1,4 @@
-package com.mingshashan.learn.lt;
+package com.mingshashan.learn.lt.l074;
 
 import com.mingshashan.learn.lt.l704.Solution;
 import org.junit.Assert;

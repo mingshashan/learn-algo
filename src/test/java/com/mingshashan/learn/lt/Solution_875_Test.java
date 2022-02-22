@@ -1,14 +1,15 @@
-package com.mingshashan.learn.lt.l875;
+package com.mingshashan.learn.lt;
 
+import com.mingshashan.learn.lt.l875.Solution_l875;
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
  * Solution_l875_Test
  *
- * @author xufj
+ * @author mingshashan
  */
-public class Solution_l875_Test {
+public class Solution_875_Test {
 
     @Test
     public void solutionTest01() {

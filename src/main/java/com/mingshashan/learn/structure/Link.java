@@ -3,7 +3,7 @@ package com.mingshashan.learn.structure;
 /**
  * Link
  *
- * @author xufj
+ * @author mingshashan
  */
 public class Link {
 }

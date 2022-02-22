@@ -13,7 +13,7 @@ package com.mingshashan.learn.lt.l034;
  * nums is a non-decreasing array.
  * -109 <= target <= 109
  */
-class Solution {
+public class Solution_034 {
     public int[] searchRange(int[] nums, int target) {
         if (0 == nums.length) {
             return new int[]{-1, -1};

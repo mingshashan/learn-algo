@@ -7,9 +7,9 @@ import org.junit.Test;
 /**
  * Solution_l1011_Test
  *
- * @author xufj
+ * @author mingshashan
  */
-public class Solution_l1011_Test {
+public class Solution_1011_Test {
 
     @Test
     public void solutionTest01() {

@@ -1,9 +1,10 @@
-package com.mingshashan.learn.lt.l704;
+package com.mingshashan.learn.lt;
 
+import com.mingshashan.learn.lt.l704.Solution;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SolutionTest {
+public class Solution_704_Test {
     @Test
     public void testBinarySearch1() throws Exception {
 

@@ -2,6 +2,7 @@ package com.mingshashan.learn.lt;
 
 import com.mingshashan.learn.lt.l160.ListNode;
 import com.mingshashan.learn.lt.l160.Solution_160;
+import com.mingshashan.learn.lt.l160.Solution_160_2;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -25,6 +26,29 @@ public class Solution_160_Test {
         expect.next.next = new ListNode(5);
 
         ListNode result = new Solution_160().getIntersectionNode(headA, headB);
+
+        Assert.assertTrue("ok", isSame(expect, result));
+    }
+
+
+    @Test
+    public void test_02() {
+        ListNode headA = new ListNode(4);
+        headA.next = new ListNode(1);
+        headA.next.next = new ListNode(8);
+        headA.next.next.next = new ListNode(4);
+        headA.next.next.next.next = new ListNode(5);
+
+        ListNode headB = new ListNode(5);
+        headB.next = new ListNode(6);
+        headB.next.next = new ListNode(1);
+        headB.next.next.next = headA.next.next;
+
+        ListNode expect = new ListNode(8);
+        expect.next = new ListNode(4);
+        expect.next.next = new ListNode(5);
+
+        ListNode result = new Solution_160_2().getIntersectionNode(headA, headB);
 
         Assert.assertTrue("ok", isSame(expect, result));
     }

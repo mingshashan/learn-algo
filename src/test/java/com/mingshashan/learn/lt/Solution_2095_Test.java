@@ -65,7 +65,7 @@ public class Solution_2095_Test {
     public void test_04() {
         ListNode head = new ListNode(2);
 
-        ListNode except = new ListNode(2);
+        ListNode except = null;
 
         ListNode result = new Solution_2095().deleteMiddle(head);
 

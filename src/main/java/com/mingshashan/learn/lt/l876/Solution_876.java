@@ -5,7 +5,7 @@ package com.mingshashan.learn.lt.l876;
  * <p>
  * If there are two middle nodes, return the second middle node.
  */
-class Solution {
+public class Solution_876 {
     public ListNode middleNode(ListNode head) {
         if (null == head || null == head.next) {
             return head;

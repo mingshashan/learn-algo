@@ -11,5 +11,6 @@ public class Common_Test {
         int y = ~0xFFF;
         System.out.printf("10: [%x] , 16: [%s]\n", y, Integer.toBinaryString(y));
 
+        System.out.println(Integer.toBinaryString(1 << 26));
     }
 }

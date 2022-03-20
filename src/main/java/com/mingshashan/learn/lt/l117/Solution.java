@@ -1,5 +1,8 @@
 package com.mingshashan.learn.lt.l117;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 class Node {
     public int val;
     public Node left;
@@ -25,39 +28,32 @@ class Solution {
 
     public Node connect(Node root) {
         if (null == root) {
-            return null;
+            return root;
         }
 
-        connect2Node(root.left, root.right);
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                Node temp = queue.remove();
+                if (null != temp.left) {
+                    queue.add(temp.left);
+                }
+                if (null != temp.right) {
+                    queue.add(temp.right);
+                }
+
+                if (i < size - 1) {
+                    temp.next = queue.peek();
+                }
+            }
+
+        }
+
         return root;
     }
 
-    private void connect2Node(Node left, Node right) {
-        if (null == left || null == right) {
-            return;
-        }
-
-        left.next = right;
-
-        connect2Node(left.left, left.right);
-        connect2Node(right.left, right.right);
-
-        connectCrossNode(left.right, right);
-    }
-
-    private void connectCrossNode(Node right, Node root) {
-        if (right == null || null == root) {
-            return;
-        }
-
-        if (root.left != null) {
-            right.next = root.left;
-            return;
-        }
-
-        if (root.right != null) {
-            right.next = root.right;
-        }
-    }
 
 }

@@ -7,8 +7,8 @@ struct TreeNode {
     struct TreeNode *right;
 };
 
-struct TreeNode* buildTree(int *nums, int leftIndex, int rightIndex) {
-    if (leftIndex > rightIndex) {
+struct TreeNode* buildTree(int *nums, int left, int right) {
+    if (left > right) {
         return NULL;
     }
 
@@ -16,17 +16,17 @@ struct TreeNode* buildTree(int *nums, int leftIndex, int rightIndex) {
     int index;
     int maxValue = 0x80000000;
 
-    for (i = leftIndex; i < rightIndex; i++) {
+    for (i = left; i <= right; i++) {
         if (*(nums + i) > maxValue) {
             maxValue = *(nums + i);
             index = i;
         }
     }
 
-    struct TreeNode* root = malloc(sizeof(struct TreeNode));
-    root->val = maxValue;
-    root->left = buildTree(nums, leftIndex, index - 1);
-    root->right = buildTree(nums, index + 1, rightIndex);
+    struct TreeNode node = {maxValue, 0, 0};
+    struct TreeNode *root = &node;
+    root->left = buildTree(nums, left, index - 1);
+    root->right = buildTree(nums, index + 1, right);
     
     return root;
 }

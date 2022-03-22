@@ -26,12 +26,12 @@ struct TreeNode* buildTree(int *nums, int left, int right) {
     struct TreeNode *node = malloc(sizeof(struct TreeNode));
     node->val = maxValue;
 
-    if (left <= index - 1) {
+    if (left <= (index - 1)) {
         node->left = buildTree(nums, left, index - 1);
     } else {
         node->left = NULL;
     }
-    if (index + 1 >= right) {
+    if ((index + 1) <= right) {
         node->right = buildTree(nums, index + 1, right);
     } else {
         node->right = NULL;

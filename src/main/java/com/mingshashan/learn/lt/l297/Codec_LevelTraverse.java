@@ -1,6 +1,7 @@
 package com.mingshashan.learn.lt.l297;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Serialization is the process of converting a data structure or object into a sequence of bits
@@ -19,8 +20,10 @@ import java.util.LinkedList;
  * <p>
  * Input: root = []
  * Output: []
+ * <p>
+ * 层级遍历
  */
-public class Codec_InOrder {
+public class Codec_LevelTraverse {
 
     private final static String SPLIT = ",";
     private final static String NULL = "#";
@@ -37,11 +40,7 @@ public class Codec_InOrder {
         if (null == data || 0 == data.length()) {
             return null;
         }
-        LinkedList<String> nodes = new LinkedList<>();
-        for (String node : data.split(SPLIT)) {
-            nodes.add(node);
-        }
-        return deserializeTree(nodes);
+        return deserializeTree(data.split(SPLIT));
     }
 
     public void serializeTree(TreeNode root, StringBuilder sb) {
@@ -50,24 +49,38 @@ public class Codec_InOrder {
             return;
         }
 
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
         sb.append(root.val).append(SPLIT);
-        serializeTree(root.left, sb);
-        serializeTree(root.right, sb);
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            if (node.left != null) {
+                queue.offer(node.left);
+                sb.append(node.left.val).append(SPLIT);
+            } else {
+                sb.append(NULL).append(SPLIT);
+            }
+            if (node.right != null) {
+                queue.offer(node.right);
+                sb.append(node.right.val).append(SPLIT);
+            } else {
+                sb.append(NULL).append(SPLIT);
+            }
+        }
     }
 
-    public TreeNode deserializeTree(LinkedList<String> nodes) {
-        if (nodes.isEmpty()) {
+    public TreeNode deserializeTree(String[] nodes) {
+        if (null == nodes || 0 == nodes.length) {
             return null;
         }
 
-        String firstNode = nodes.removeFirst();
-        if (firstNode.equals(NULL)) {
-            return null;
+        TreeNode root = new TreeNode(Integer.parseInt(nodes[0]));
+        for (int i = 1; i < nodes.length; i++) {
+            if (!nodes[i].equals(NULL)) {
+                
+            }
         }
 
-        TreeNode treeNode = new TreeNode(Integer.parseInt(firstNode));
-        treeNode.left = deserializeTree(nodes);
-        treeNode.right = deserializeTree(nodes);
-        return treeNode;
+        return root;
     }
 }

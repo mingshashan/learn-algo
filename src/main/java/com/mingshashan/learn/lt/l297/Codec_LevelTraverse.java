@@ -30,6 +30,9 @@ public class Codec_LevelTraverse {
 
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
+        if (null == root) {
+            return "";
+        }
         StringBuilder sb = new StringBuilder();
         serializeTree(root, sb);
         return sb.toString();
@@ -51,21 +54,17 @@ public class Codec_LevelTraverse {
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
-        sb.append(root.val).append(SPLIT);
+
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
-            if (node.left != null) {
-                queue.offer(node.left);
-                sb.append(node.left.val).append(SPLIT);
-            } else {
+            if (null == node) {
                 sb.append(NULL).append(SPLIT);
+                continue;
             }
-            if (node.right != null) {
-                queue.offer(node.right);
-                sb.append(node.right.val).append(SPLIT);
-            } else {
-                sb.append(NULL).append(SPLIT);
-            }
+
+            sb.append(node.val).append(SPLIT);
+            queue.offer(node.left);
+            queue.offer(node.right);
         }
     }
 
@@ -75,9 +74,23 @@ public class Codec_LevelTraverse {
         }
 
         TreeNode root = new TreeNode(Integer.parseInt(nodes[0]));
-        for (int i = 1; i < nodes.length; i++) {
-            if (!nodes[i].equals(NULL)) {
-                
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        for (int i = 1; i < nodes.length;) {
+            TreeNode node = queue.poll();
+            String left = nodes[i++];
+            if (!left.equals(NULL)) {
+                node.left = new TreeNode(Integer.parseInt(left));
+                queue.offer(node.left);
+            } else {
+                node.left = null;
+            }
+            String right = nodes[i++];
+            if (!right.equals(NULL)) {
+                node.right = new TreeNode(Integer.parseInt(right));
+                queue.offer(node.right);
+            } else {
+                node.right = null;
             }
         }
 

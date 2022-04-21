@@ -11,7 +11,7 @@ package com.mingshashan.learn.lt.l130;
  * 然后再遍历整个棋盘，把剩下的 O 换成 X，把 # 恢复成 O。
  * 这样就能完成题目的要求，时间复杂度 O(MN)。
  */
-class Solution {
+public class Solution_130 {
 
     private char x = 'X';
     private char o = 'O';

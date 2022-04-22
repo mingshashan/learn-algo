@@ -51,6 +51,7 @@ public class Solution_261 {
             }
 
             parent[rootP] = rootQ;
+            count--;
         }
 
         /**

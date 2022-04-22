@@ -80,6 +80,7 @@ public class Solution_1135 {
             }
 
             parent[rootP] = rootQ;
+            count--;
         }
 
         /**

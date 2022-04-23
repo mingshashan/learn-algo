@@ -27,6 +27,7 @@ struct TreeNode {
     struct TreeNode *right;
 };
 
+
 struct ListNode *findMid(struct ListNode *head, struct ListNode *tail) {
     struct ListNode *fast = head, *slow = head;
     while (fast != tail && fast->next != tail) {
@@ -44,6 +45,7 @@ struct TreeNode* toBST(struct ListNode* head, struct ListNode* tail){
 
     struct ListNode *mid = findMid(head, tail);
     struct TreeNode *root = malloc(sizeof(struct TreeNode));
+    root->val = mid->val;
     root->left = toBST(head, mid);
     root->right = toBST(mid->next, tail);
 
@@ -53,3 +55,4 @@ struct TreeNode* toBST(struct ListNode* head, struct ListNode* tail){
 struct TreeNode* sortedListToBST(struct ListNode* head){
     return toBST(head, NULL);
 }
+

@@ -1,4 +1,4 @@
-
+#include <stdlib.h>
 
 /**
  * 1 <= capacity <= 3000
@@ -8,32 +8,45 @@
  *
  */
 
+#define MAX_CAPACITY 3192
+
 typedef struct {
-    int key;
     int val;
-    Node *prev;
-    Node *next;
-} Node;
-
-typedef struct {
-    Node *head;
-    Node *tail;
-    int size;
-} double_link;
-
-typedef struct {
-
+    bool valid;
+    struct LRUCache *prex;
+    struct LRUCache *next;
 } LRUCache;
 
-struct double_link link;
+struct cdata {
+    int capacity;
+    int size;
+    struct LRUCache *cache;
+    struct LRUCache *heah;
+    struct LRUCache *tail;
+};
 
-void init_link(int capacity) {
+inline void *alloc_cache(size_t capacity) {
+    struct cdata *cdata = calloc(1, sizeof(*cdata));
+    cdata->cache = calloc(1, sizeof(struct LRUCache[MAX_CAPACITY]));
+    cdata->capacity = capacity;
     
+    return cdata;
+}
+
+inline void *dealloc_cache(void *obj) {
+    free(((struct cdata *)obj)->cache);
+    free(obj);
+}
+
+inline void refresh_cache(struct LRUCache *item, struct cdata *cdata, bool front) {
+    struct LRUCache **prev = &item->prev;
+
+
 }
 
 // 初始分配容量为capacity的LRU cache
-LRUCache *lRUCacheCreate(int capacity)
-{
+LRUCache *lRUCacheCreate(int capacity) {
+
 }
 
 int lRUCacheGet(LRUCache *obj, int key)

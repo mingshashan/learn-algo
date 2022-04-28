@@ -3,7 +3,8 @@ package com.mingshashan.learn.lt.l003;
 import java.util.HashMap;
 
 /**
- * Given a string s, find the length of the longest substring without repeating characters.
+ * Given a string s, find the length of the longest substring without repeating
+ * characters.
  * <p>
  * Input: s = "abcabcbb"
  * Output: 3
@@ -34,7 +35,7 @@ class Solution2 {
             res = res > len ? res : len;
         }
 
-        return  res == 0 ? s.length() : res;
+        return res == 0 ? s.length() : res;
     }
 
     public static void main(String[] args) {

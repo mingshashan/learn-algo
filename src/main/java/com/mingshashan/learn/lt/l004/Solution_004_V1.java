@@ -24,7 +24,7 @@ package com.mingshashan.learn.lt.l004;
  * 1 <= m + n <= 2000
  * -106 <= nums1[i], nums2[i] <= 106
  */
-public class Solution_004 {
+public class Solution_004_V1 {
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         if (nums1.length == 0 && nums2.length == 0) {
@@ -37,11 +37,11 @@ public class Solution_004 {
 
         int l1 = nums1.length;
         int l2 = nums2.length;
-        int k = (l1 + l2 + 1) / 2;
+
+        int k = (l1 + l2 + 1) >>> 1;
 
         int low = 0, height = l1;
         while (low <= height) {
-
             int cut1 = (low + height) / 2;
             int cut2 = k - cut1;
 
@@ -51,13 +51,11 @@ public class Solution_004 {
             int right1 = cut1 == l1 ? Integer.MAX_VALUE : nums1[cut1];
             int right2 = cut2 == l2 ? Integer.MAX_VALUE : nums2[cut2];
 
-            // 已经找到
+            // 找到了
             if (left1 <= right2 && left2 <= right1) {
                 if ((l1 + l2) % 2 == 0) {
-                    // 偶数
                     return (Math.max(left1, left2) + Math.min(right1, right2)) / 2.0;
                 } else {
-                    // 奇数
                     return Math.max(left1, left2);
                 }
             } else if (left1 > right2) {
@@ -65,8 +63,10 @@ public class Solution_004 {
             } else {
                 low = cut1 + 1;
             }
+
         }
 
-        return 0.0;
+        return -1;
     }
+
 }

@@ -39,7 +39,6 @@ int* plusOne(int* digits, int digitsSize, int* returnSize){
 
     // 直接多分配一个，这样更方便
     int *result = malloc((digitsSize + 1) * sizeof(int));
-    returnSize = (int *)malloc(sizeof(int));
 	int tempSize = digitsSize;
 
     // 最后一个
@@ -63,20 +62,19 @@ int* plusOne(int* digits, int digitsSize, int* returnSize){
     if (carry == 1) {
         *(result + 0) = 1;
 		tempSize += 1;
-        returnSize = &tempSize;
     }
 
+	returnSize = &tempSize;
     return result;
 }
 
 int main(int argc, char const *argv[]) {
     int digits[1] = {9};
     int digitsSize = 1;
-	int temp = 1;
-    int* returnSize = &temp;
-    int *result = plusOne(digits, digitsSize, returnSize);
+    int returnSize = 0;
+    int *result = plusOne(digits, digitsSize, &returnSize);
 
-    for (int i = 0; i < *returnSize; i++) {
+    for (int i = 0; i < returnSize; i++) {
         printf("*(result + %d) = [%d]\n", i, *(result + i));
     }
     return 0;

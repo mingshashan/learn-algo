@@ -35,13 +35,12 @@
  * 参考Java版写法，一样处理
  */
 int* plusOne(int* digits, int digitsSize, int* returnSize){
-    int length = digitsSize;
     int carry = 0;
 
     // 直接多分配一个，这样更方便
     int *result = malloc((digitsSize + 1) * sizeof(int));
-    *returnSize = malloc(sizeof(int));
-    *returnSize = digitsSize;
+    returnSize = (int *)malloc(sizeof(int));
+	int tempSize = digitsSize;
 
     // 最后一个
     int last = *(digits + digitsSize - 1) + 1;
@@ -63,19 +62,21 @@ int* plusOne(int* digits, int digitsSize, int* returnSize){
 
     if (carry == 1) {
         *(result + 0) = 1;
-        *returnSize = returnSize + 1;
+		tempSize += 1;
+        returnSize = &tempSize;
     }
 
     return result;
 }
 
 int main(int argc, char const *argv[]) {
-    int* digits = {9};
+    int digits[1] = {9};
     int digitsSize = 1;
-    int* returnSize = 0;
-
+	int temp = 1;
+    int* returnSize = &temp;
     int *result = plusOne(digits, digitsSize, returnSize);
-    for (int i = 0; i < returnSize; i++) {
+
+    for (int i = 0; i < *returnSize; i++) {
         printf("*(result + %d) = [%d]\n", i, *(result + i));
     }
     return 0;

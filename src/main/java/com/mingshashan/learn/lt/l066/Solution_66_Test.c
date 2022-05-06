@@ -39,21 +39,23 @@ int* plusOne(int* digits, int digitsSize, int* returnSize){
 
     // 直接多分配一个，这样更方便
     int *result = malloc((digitsSize + 1) * sizeof(int));
-	int tempSize = digitsSize;
-
+    *returnSize = digitsSize;
     // 最后一个
     int last = *(digits + digitsSize - 1) + 1;
     if (last == 10) {
-        *(result + digitsSize - 1) = 0;
+        *(result + digitsSize) = 0;
         carry = 1;
+    } else {
+        *(result + digitsSize) = last;
     }
+
     int di = 0;
     for (int i = digitsSize - 2; i >= 0; i--) {
         di = *(digits + i) + carry;
         if (di < 10) {
             *(result + i + 1) = di;
             carry = 0;
-            break;
+            continue;
         }
         *(result + i + 1) = 0;
         carry = 1;
@@ -61,16 +63,23 @@ int* plusOne(int* digits, int digitsSize, int* returnSize){
 
     if (carry == 1) {
         *(result + 0) = 1;
-		tempSize += 1;
+		*returnSize = digitsSize + 1;
+        return result;
     }
 
-	returnSize = &tempSize;
-    return result;
+    return &(*(result + 1));
 }
 
 int main(int argc, char const *argv[]) {
-    int digits[1] = {9};
-    int digitsSize = 1;
+    // int digits[4] = {4, 3, 2, 1};
+    // int digitsSize = 4;
+    // int digits[4] = {4, 3, 2, 9};
+    // int digitsSize = 4;
+    // int digits[2] = {9, 9};
+    // int digitsSize = 2;
+    int digits[3] = {1, 9, 9};
+    int digitsSize = 3;
+
     int returnSize = 0;
     int *result = plusOne(digits, digitsSize, &returnSize);
 
@@ -79,3 +88,28 @@ int main(int argc, char const *argv[]) {
     }
     return 0;
 }
+
+// int main(int argc, char const *argv[]) {
+//     int digits[3] = {1, 2, 3};
+//     int digitsSize = 3;
+//     int returnSize = 0;
+//     int *result = plusOne(digits, digitsSize, &returnSize);
+
+//     for (int i = 0; i < returnSize; i++) {
+//         printf("*(result + %d) = [%d]\n", i, *(result + i));
+//     }
+//     return 0;
+// }
+
+// int main(int argc, char const *argv[]) {
+//     int digits[1] = {9};
+//     int digitsSize = 1;
+//     int returnSize = 0;
+//     int *result = plusOne(digits, digitsSize, &returnSize);
+
+//     for (int i = 0; i < returnSize; i++) {
+//         printf("*(result + %d) = [%d]\n", i, *(result + i));
+//     }
+//     return 0;
+// }
+

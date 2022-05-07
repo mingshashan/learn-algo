@@ -30,3 +30,5 @@ target
 .vscode
 *.o
 bin
+
+*.o.dSYM

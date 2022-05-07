@@ -13,11 +13,11 @@ package com.mingshashan.learn.lt.l006;
  * <p>
  * string convert(string s, int numRows);
  * 可以看到，组成之字一个角度的长度为2N，组成一个之字需要 3N-2
+ *
  * T = (N + N - 2) = 2N - 2
- * 对字符串中第M个字符，其所在行数为
  * if (N <= (m%T) < T) -> l(m) = 2N - (m % T)
  * if (m % T) < N -> l(m) = (m % T) % N
- * 也因此可以推算出1...N行的元素在字s中的排序，如
+ * so can find the result string elements(1...N) the index in s
  * l1 -> 1, T+1, 2T+1 -> i*T + 1, N+i*T+(n-x) -> (1,)
  * l2 -> 2, T, T+2, 2T, 2T+2 -> i*T + 2和i*T
  * l3 -> 3, T-1, T+3, 2T-1, 2T+3 -> i*T+3 和i*T-1
@@ -39,15 +39,13 @@ public class Solution_006_V2 {
         }
         int length = s.length();
         StringBuilder sb = new StringBuilder();
-        // 从第一行开始,第一行和最后一行比较特殊
-        // i*T + x 和N+i*T+(n-x)
         int t = numRows * 2 - 2;
         for (int i = 1; i <= numRows; i++) {
-            // 刚开始为 (n)*T + i, n为次数
+            // n -> for while loop
             int n = 0;
-            // i*T + x
+            // n * t + i
             int ci = n * t + i;
-            // N+i*T+(n-x)
+            // numRows + n * t + (numRows-i)
             int zi = numRows + n * t + (numRows - i);
 
             while (ci <= length) {
@@ -56,9 +54,7 @@ public class Solution_006_V2 {
                     sb.append(s.charAt(zi - 1));
                 }
                 ++n;
-                // i*T + x
                 ci = n * t + i;
-                // N+i*T+(n-x)
                 zi = numRows + n * t + (numRows - i);
             }
 

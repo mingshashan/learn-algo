@@ -30,17 +30,14 @@ struct ListNode* reverseList(struct ListNode* head){
 
 // iterator
 struct ListNode* reverseList(struct ListNode* head){
-    if (head == NULL || head->next == NULL) {
-        return head;
-    }
 
-    struct ListNode *prev = NULL, *cur = head, *next;
+    struct ListNode *prev = NULL, *next;
     
-    while (cur != NULL) {
-        next = cur->next;
-        cur->next = prev;
-        prev = cur;
-        cur = next;
+    while (head != NULL) {
+        next = head->next;
+        head->next = prev;
+        prev = head;
+        head = next;
     }
     
     return prev;

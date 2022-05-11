@@ -4,16 +4,12 @@ import com.mingshashan.learn.lt.common.ListNode;
 
 public class Solution_206_V2 {
     public ListNode reverseList(ListNode head) {
-        if (null == head || null == head.next) {
-            return head;
-        }
-
-        ListNode prev = null, cur = head, next;
-        while (cur != null) {
-            next = cur.next;
-            cur.next = prev;
-            prev = cur;
-            cur = next;
+        ListNode prev = null, next;
+        while (head != null) {
+            next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
         }
         return prev;
     }

@@ -1,6 +1,6 @@
 package com.mingshashan.learn.lt;
 
-import com.mingshashan.learn.lt.l460.LFUCache;
+import com.mingshashan.learn.lt.l460.LFUCache_V1;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class LFUCache_Test {
     //[null, null, null, 1, null, -1, 3, null, -1, 3, 4]
     @Test
     public void test_01() {
-        LFUCache lfuCache = new LFUCache(2);
+        LFUCache_V1 lfuCache = new LFUCache_V1(2);
         int value;
         lfuCache.put(1, 1);
         lfuCache.put(2, 2);
@@ -42,7 +42,7 @@ public class LFUCache_Test {
 
     @Test
     public void test_02() {
-        LFUCache lfuCache = new LFUCache(0);
+        LFUCache_V1 lfuCache = new LFUCache_V1(0);
         int value;
         lfuCache.put(0, 0);
         value = lfuCache.get(1);

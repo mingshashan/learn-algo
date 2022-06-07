@@ -39,7 +39,8 @@ public class UF_V3 {
         if (rootP == rootQ) {
             return;
         }
-        rootP = parent[rootQ];
+        // 将两颗树合为一个
+        parent[rootP] = rootQ;
         // 连通分量-1
         count--;
     }

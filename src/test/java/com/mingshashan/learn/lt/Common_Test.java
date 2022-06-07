@@ -38,4 +38,19 @@ public class Common_Test {
         ListNode result = reserve(head);
         System.out.println(result.val);
     }
+
+    @Test
+    public void test_03() {
+        int[][] array = {{0, 1, 2, 3}, {10, 11, 12, 13}, {20, 21, 22, 23}, {30, 31, 32, 33}, {40, 41, 42, 43}, {50, 51, 52, 53}};
+
+        int m = array.length;
+        int n = array[0].length;
+        System.out.printf("array[%d][%d]:\n", m, n);
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.printf("%d\t", array[i][j]);
+            }
+            System.out.printf("\n");
+        }
+    }
 }

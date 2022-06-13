@@ -19,7 +19,7 @@ public class Solution_261 {
         UF uf = new UF(n);
         for (int i = 0; i < edges.length; i++) {
             int[] peer = edges[i];
-            if (!uf.connected(peer[0], peer[1])) {
+            if (uf.connected(peer[0], peer[1])) {
                 return false;
             }
             uf.union(peer[0], peer[1]);
